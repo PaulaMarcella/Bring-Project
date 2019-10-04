@@ -1,36 +1,48 @@
 import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import bringLogo from "../assets/bring2.svg";
+import { LinkContainer } from "react-router-bootstrap";
 
-export default class navigationBar extends Component {
+export class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Bring</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar bg="light" fixed="top" expand="lg">
+          <Navbar.Brand href="#home">
+            <img
+              src={bringLogo}
+              width="40"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href={Signin}>Sign in</Nav.Link>
-              <Nav.Link href={Signup}>Sign Up</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link href="#home">Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/foo/bar">
+                <Nav.Link href="#link">Our Mission</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/foo/bar">
+                <Nav.Link href="#link">Donate</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/foo/bar">
+                <Nav.Link href="#link">Parcipate as an institution</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/signin">
+                <Nav.Link href="#link">Sign in as a Donor</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/signin">
+                <Nav.Link href="#link">Sign in as a Volunteer</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -38,3 +50,5 @@ export default class navigationBar extends Component {
     );
   }
 }
+
+export default NavigationBar;
