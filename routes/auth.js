@@ -53,7 +53,7 @@ router.post("/signup", (req, res, next) => {
           req.session.user = {
             _id: user._id
           };
-          res.redirect("/profile");
+          // res.redirect("/profile");
         })
         .catch(error => {
           console.log("Could not redirect", error);
@@ -64,9 +64,9 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/login", (req, res, next) => {
-  res.render("auth/login");
-});
+// router.get("/login", (req, res, next) => {
+//   res.render("auth/login");
+// });
 
 router.post("/login", (req, res, next) => {
   const username = req.body.username;
@@ -102,7 +102,7 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res, next) => {
   req.session.destroy(error => {
     // can't access session here
-    res.redirect("/login");
+    // res.redirect("/login");
   });
 });
 

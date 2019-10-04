@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
-  role: {
-    required: true,
-    enum: ["User", "Organisation"]
-  },
+  // role: {
+  //   required: true,
+  //   enum: ["User", "Organisation"]
+  // },
   email: {
     type: String,
     trim: true,
