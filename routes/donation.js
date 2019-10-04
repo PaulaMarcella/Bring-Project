@@ -33,7 +33,11 @@ const checkLogin = require("../controllers/check-login");
 //   console.log(req.body);
 // });
 
-router.post("/donation/create", (req, res, next) => {
+router.get("/test", (req, res, next) => {
+  res.json({ msg: "donation works" });
+});
+
+router.post("/create", (req, res, next) => {
   // Creating an event
   //console.log("The event object:", req.body);
   // const eventName = req.body.event;
@@ -63,7 +67,7 @@ router.post("/donation/create", (req, res, next) => {
 // Note: Whatever goes after ":"" in the route is being accessed
 // with the same name in req.params.THENAME
 
-router.get("/donation/:id", checkLogin, (req, res, next) => {
+router.get("/:id", checkLogin, (req, res, next) => {
   Donation.findById(req.params.id)
     .populate("_creator")
     .then(donation => {
@@ -74,7 +78,7 @@ router.get("/donation/:id", checkLogin, (req, res, next) => {
     });
 });
 
-router.patch("/donation/:id/edit", (req, res, next) => {
+router.patch("/:id/edit", (req, res, next) => {
   const {
     donationName,
     category,
@@ -105,7 +109,7 @@ router.patch("/donation/:id/edit", (req, res, next) => {
     });
 });
 
-router.delete("/donation/:id/delete", (req, res, next) => {
+router.delete("/:id/delete", (req, res, next) => {
   const donationId = req.params.id;
   // Grab the ID and use it as an argument for deleting
   Donation.findByIdAndDelete(donationId)

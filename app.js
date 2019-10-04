@@ -68,8 +68,8 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/", donationRouter);
-app.use("/", userRouter);
+app.use("/donation", donationRouter);
+//app.use("/", userRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
