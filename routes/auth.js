@@ -53,7 +53,7 @@ router.post("/signup", (req, res, next) => {
           req.session.user = {
             _id: user._id
           };
-          // res.redirect("/profile");
+          res.json({ msg: user });
         })
         .catch(error => {
           console.log("Could not redirect", error);
