@@ -80,7 +80,8 @@ router.post("/login", (req, res, next) => {
         throw new Error("username could not be found");
       } else {
         tempUser = user;
-        return bcrypt.compare(passwordHash, user.passwordHash);
+        console.log(passwordHash, user.passwordHash);
+        return bcrypt.compare(passwordHash, user.password);
       }
     })
     .then(match => {
@@ -90,12 +91,12 @@ router.post("/login", (req, res, next) => {
         req.session.user = {
           _id: tempUser._id
         };
-        res.redirect("profile");
+        res.json({ msg: username });
       }
     })
     .catch(error => {
       console.log("Problem Logging user in", error);
-      next(error);
+      res.json({ msg: error });
     });
 });
 
@@ -103,6 +104,7 @@ router.get("/logout", (req, res, next) => {
   req.session.destroy(error => {
     // can't access session here
     // res.redirect("/login");
+    res.json({ msg: "so the user is logged out and drinking beer" });
   });
 });
 
