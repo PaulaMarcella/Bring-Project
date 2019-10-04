@@ -1,8 +1,18 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
 
 export class Home extends Component {
   render() {
-    return <div>Home view</div>;
+    return (
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        Home view
+        <Button variant="primary">Volunteers and Donors</Button>
+        <Button variant="primary">Institutions</Button>
+      </div>
+    );
   }
 }
 
