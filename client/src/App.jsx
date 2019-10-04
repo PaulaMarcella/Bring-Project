@@ -3,7 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./views/Home";
+import HomeView from "./views/Home";
+import DonationView from "./views/Donation";
 import Signup from "./views/Signup";
 import Signin from "./views/Signin";
 import NavigationBar from "./components/NavigationBar";
@@ -13,9 +14,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavigationBar />
         <Switch>
-          <NavigationBar />
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={HomeView} />
+          <Route path="/donation" exact component={DonationView} />
           <Route path="/signin" exact component={Signin} />
           <Route path="/signup" exact component={Signup} />
         </Switch>

@@ -13,7 +13,7 @@ export class NavigationBar extends Component {
     return (
       <div>
         <Navbar bg="light" fixed="top" expand="lg">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src={bringLogo}
               width="40"
