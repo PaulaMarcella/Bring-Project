@@ -67,7 +67,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
-app.use("/", authRouter);
+app.use("/auth", authRouter);
 app.use("/", donationRouter);
 app.use("/", userRouter);
 

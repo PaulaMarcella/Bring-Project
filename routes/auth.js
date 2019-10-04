@@ -46,7 +46,7 @@ router.post("/signup", (req, res, next) => {
         username,
         imageUrl,
         donationPost,
-        passwordHash: hash
+        password: hash
         //imageURL
       })
         .then(user => {
