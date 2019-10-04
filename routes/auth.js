@@ -102,8 +102,6 @@ router.post("/login", (req, res, next) => {
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy(error => {
-    // can't access session here
-    // res.redirect("/login");
     res.json({ msg: "so the user is logged out and drinking beer" });
   });
 });
