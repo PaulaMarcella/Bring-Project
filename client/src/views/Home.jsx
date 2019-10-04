@@ -8,7 +8,9 @@ export class Home extends Component {
         <br></br>
         <br></br>
         <br></br>
-        Home view
+        <br></br>
+        <br></br>
+        <br></br>
         <Button variant="primary">Volunteers and Donors</Button>
         <Button variant="primary">Institutions</Button>
       </div>
