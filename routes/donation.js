@@ -46,15 +46,15 @@ router.post("/create", (req, res, next) => {
   const description = req.body.description;
   const location = req.body.location;
   const imageUrl = req.file && req.file.url;
-  const _creator = req.session.user._id;
+  //const _creator = req.session.user._id;
 
   Donation.create({
     donationName,
     category,
     description,
     location,
-    imageUrl,
-    _creator
+    imageUrl
+    //_creator
   })
     .then(donation => {
       res.json({ type: "success", data: { donation } });
