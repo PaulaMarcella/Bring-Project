@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Signup from "./views/Signup";
 import Signin from "./views/Signin";
-import NavigationBar from "./components/NavigationBar";
+import NavigationBar from "./components/navigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
