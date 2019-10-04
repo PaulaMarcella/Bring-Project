@@ -84,8 +84,8 @@ router.patch("/:id/edit", (req, res, next) => {
     category,
     description,
     location,
-    imageUrl,
-    _creator
+    imageUrl
+    //_creator
   } = req.body;
   const donationId = req.params.id;
 
@@ -96,8 +96,8 @@ router.patch("/:id/edit", (req, res, next) => {
       ...(category && { category }),
       ...(description && { description }),
       ...(location && { location }),
-      ...(imageUrl && { imageUrl }),
-      ...(_creator && { _creator })
+      ...(imageUrl && { imageUrl })
+      //...(_creator && { _creator })
     },
     { new: true }
   )
