@@ -28,50 +28,33 @@ const checkLogin = require("../controllers/check-login");
 
 //----------------------------------------
 
-router.get("/donation", checkLogin, (req, res, next) => {
-  res.render("event/event");
-  console.log(req.body);
-});
+// router.get("/donation", checkLogin, (req, res, next) => {
+//   res.render("/");
+//   console.log(req.body);
+// });
 
 router.post("/donation", (req, res, next) => {
   // Creating an event
   //console.log("The event object:", req.body);
   // const eventName = req.body.event;
-  const eventName =
-    req.body.event.charAt(0).toUpperCase() +
-    req.body.event.slice(1).toLowerCase();
-  const description =
-    req.body.description.charAt(0).toUpperCase() +
-    req.body.description.slice(1).toLowerCase();
-  const artists =
-    req.body.artists.charAt(0).toUpperCase() +
-    req.body.artists.slice(1).toLowerCase();
-  const genre =
-    req.body.genre.charAt(0).toUpperCase() +
-    req.body.genre.slice(1).toLowerCase();
-  const city =
-    req.body.city.charAt(0).toUpperCase() +
-    req.body.city.slice(1).toLowerCase();
-  const ticketURL = req.body.ticket;
-  const imageURL = req.file && req.file.url;
-  const date = req.body.date;
-  const creator = req.session.user._id;
+  const donationName = req.body.donationName;
+  const category = req.body.category;
+  const description = req.body.description;
+  const location = req.body.location;
+  const imageUrl = req.file && req.file.url;
+  const _creator = req.session.user._id;
 
   Donation.create({
-    eventName,
+    donationName,
+    category,
     description,
-    artists,
-    genre,
-    city,
-    ticketURL,
-    imageURL,
-    date,
-    creator
+    location,
+    imageUrl,
+    _creator
   })
-    .then(event => {
-      //console.log(event);
-      //res.render('event/eventPage', {event});
-      res.redirect("/eventPage/" + event._id);
+    .then(donation => {
+      console.log(donation);
+      res.redirect("/donation" + donation._id);
     })
     .catch(error => {
       console.log(error);
@@ -84,11 +67,8 @@ router.post("/donation", (req, res, next) => {
 router.get("/donation/:id", checkLogin, (req, res, next) => {
   Donation.findById(req.params.id)
     .populate("creator")
-    .populate("comments.commentAuthor")
-    .then(event => {
-      console.log("POPULATED EVENT", event);
-
-      res.render("event/eventPage", { event });
+    .then(donation => {
+      res.render("event/eventPage", { donation });
     })
     .catch(error => {
       console.log(error);
@@ -98,9 +78,9 @@ router.get("/donation/:id", checkLogin, (req, res, next) => {
 router.get("/donation/:id/edit", checkLogin, (req, res, next) => {
   // console.log(req.params.id);
   Donation.findById(req.params.id)
-    .then(event => {
+    .then(donation => {
       // console.log(event)
-      res.render("event/eventPage-edit", { event });
+      res.render("event/eventPage-edit", { donation });
     })
     .catch(error => {
       console.log(error);

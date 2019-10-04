@@ -1,53 +1,42 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const eventSchema = new mongoose.Schema({
-  eventName: {
+const donationSchema = new mongoose.Schema({
+  donationName: {
     type: String,
     required: true
   },
-  artists: {
-    type: String //change to array
-    //required: true
+  category: {
+    type: String,
+    enum: ["Food", "Clothing", "Furniture", "Other"],
+    default: "Other"
   },
   description: {
     type: String,
     required: true
   },
-  genre: {
-    type: String,
-    required: true //change to array
-  },
-  city: {
+  location: {
     type: String,
     required: true
   },
-  ticketURL: {
-    type: String
-  },
-  imageURL: {
+  imageUrl: {
     type: String,
-    default: '../images/default-image.jpg'
-    //required: true
+    default: ""
   },
-  date: {
-    type: Date
-    //required: true
-    //
-  },
-  creator: {
+  _creator: {
     type: ObjectId,
     ref: "User"
   },
-  comments: [{
-    commentBody: String,
-    commentTitle:String,
-    commentAuthor: { type: ObjectId,
-                      ref: "User"
-                    }
-  }]
+  _requestedBy: {
+    type: ObjectId,
+    ref: "User"
+  },
+  _volunteer: {
+    type: ObjectId,
+    ref: "User"
+  }
 });
 
-module.exports = mongoose.model('Event', eventSchema);
+module.exports = mongoose.model("Donation", donationSchema);
