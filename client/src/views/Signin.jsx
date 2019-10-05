@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 export class Signin extends Component {
   render() {
-    return <div>sign in view</div>;
+    return (
+      <div>
+        <h1>sign in view</h1>
+      </div>
+    );
   }
 }
 

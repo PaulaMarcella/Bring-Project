@@ -35,13 +35,10 @@ export class NavigationBar extends Component {
                 <Nav.Link href="#link">Donate</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/foo/bar">
-                <Nav.Link href="#link">Parcipate as an institution</Nav.Link>
+                <Nav.Link href="#link">Volunteer</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/signin">
-                <Nav.Link href="#link">Sign in as a Donor</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/signin">
-                <Nav.Link href="#link">Sign in as a Volunteer</Nav.Link>
+                <Nav.Link href="#link">Participate as an Institution</Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
