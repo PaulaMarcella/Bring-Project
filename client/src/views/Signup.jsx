@@ -1,40 +1,87 @@
 import React, { Component } from "react";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-export class Signup extends Component {
+import { signUp as signUpService } from "../services/authentication-api";
+
+export default class SignUp extends Component {
+  state = {
+    email: "",
+    name: "",
+    password: ""
+  };
+
+  onValueChange = event => {
+    const name = event.target.name;
+    const value =
+      event.target.type === "number"
+        ? event.target.valueAsNumber
+        : event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  signUp = event => {
+    event.preventDefault();
+    const { email, name, password } = this.state;
+    signUpService({ email, name, password })
+      .then(user => {
+        this.props.loadUser(user);
+        console.log("user in component is", user);
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <Container>
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
+        <Container className="m-2 p-2">
+          <Form onSubmit={this.signUp}>
+            <Form.Group>
+              <Form.Label htmlFor="sign-up-email">Email</Form.Label>
+              <Form.Control
+                id="sign-up-email"
+                name="email"
+                required
+                type="email"
+                placeholder="Email"
+                onChange={this.onValueChange}
+                value={this.state.email}
+              />
             </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+            <Form.Group>
+              <Form.Label htmlFor="sign-up-name">Name</Form.Label>
+              <Form.Control
+                id="sign-up-name"
+                name="name"
+                required
+                placeholder="Name"
+                onChange={this.onValueChange}
+                value={this.state.name}
+              />
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
+            <Form.Group>
+              <Form.Label htmlFor="sign-up-password">Password</Form.Label>
+              <Form.Control
+                id="sign-up-password"
+                name="password"
+                required
+                type="password"
+                placeholder="Password"
+                onChange={this.onValueChange}
+                value={this.state.password}
+              />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <Button type="submit">Sign Up</Button>
           </Form>
         </Container>
       </div>
     );
   }
 }
-
-export default Signup;

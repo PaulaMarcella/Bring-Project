@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import Signup from "./Signup";
 import { Link } from "react-router-dom";
 
@@ -38,14 +39,18 @@ export class Home extends Component {
     if (this.state.buttonClicked === "volunteer") {
       return (
         <div>
-          <h1>Voulunteers and donors</h1>
+          <Container>
+            <h1>Voulunteers and donors</h1>
+          </Container>
           <Signup />
         </div>
       );
     } else if (this.state.buttonClicked === "institution") {
       return (
         <div>
-          <h1>Institutions</h1>
+          <Container>
+            <h1>Institutions</h1>
+          </Container>
           <Signup />
         </div>
       );
