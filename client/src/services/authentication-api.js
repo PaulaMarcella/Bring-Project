@@ -11,6 +11,7 @@ export const signUp = ({ email, name, password }) => {
       .post("/signup", { email, name, password })
       .then(response => {
         resolve(response.data.data.user);
+        this.Props.history("/");
       })
       .catch(error => {
         reject(error);

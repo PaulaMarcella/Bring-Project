@@ -32,7 +32,7 @@ router.get("/test", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const email = req.body.email;
-  const username = req.body.username;
+  const username = req.body.name;
   const imageUrl = req.body.imageUrl;
   const donationPost = req.body._donationPost;
   const passwordHash = req.body.password;
